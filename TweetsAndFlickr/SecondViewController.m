@@ -45,8 +45,11 @@
              if ([arrayOfAccounts count] > 0)
              {
                  ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+               //  NSString *query=@"Optimusmobili6ty";
+               //  NSString *encodedQuery = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+              //   NSString *urlString = [NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@", encodedQuery];
                  
-                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/home_timeline.json"];
+                 NSURL *requestURL = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
                  
                  NSMutableDictionary *parameters =
                  [[NSMutableDictionary alloc] init];
@@ -104,6 +107,7 @@
     NSDictionary *tweet = _dataSource[[indexPath row]];
     
     cell.textLabel.text = tweet[@"text"];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     
     NSLog(@"in cell for row");
     return cell;

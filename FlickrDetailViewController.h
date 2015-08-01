@@ -12,8 +12,16 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageShow;
+
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @property (nonatomic,strong) NSString *collect;
+
+
+
+
+
+
+
 
 @end

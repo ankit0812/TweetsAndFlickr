@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view.
     
     _imageShow.image=[UIImage imageNamed:_collect];
-    NSLog(@"%@",_imageShow.image);
+    NSLog(@"%@",_imageShow);
 
 }
 
@@ -39,4 +39,3 @@
 }
 */
 @end
-

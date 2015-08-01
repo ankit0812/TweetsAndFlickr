@@ -13,7 +13,7 @@
 #import "FlickrDetailViewController.h"
 
 @interface FirstViewController (){
-    NSArray *image;
+    NSMutableArray *image;
 }
 @property(nonatomic, strong) NSMutableDictionary *searchResults;
 
@@ -82,12 +82,19 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{                                   //collection view cells are put in reusable queue and deqeued when used
+{                         //collection view cells are put in reusable queue and deqeued when used
     
     FlickrCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
     NSString *searchTerm = self.searches[indexPath.section];
-    cell.photo = self.searchResults[searchTerm]
-    [indexPath.row];
+    cell.photo = self.searchResults[searchTerm][indexPath.row];
+//NSLog(@" here goes the image %@",cell.photohumbnail);
+    
+ /*   UIImageView *ImageView = cell.photo.thumbnail;
+    ImageView.image = [UIImage imageNamed:[image objectAtIndex:indexPath.row]];*/
+   // [image addObject:(UIImage *)cell.photo.thumbnail];
+   // NSLog(@" here goes the image %@",image);
+
+    
     return cell;
 }
 
@@ -120,8 +127,10 @@
         NSArray *indexPaths=[self.collectionView indexPathsForSelectedItems];
         FlickrDetailViewController *imageSelected=segue.destinationViewController;
         NSIndexPath *path=[indexPaths objectAtIndex:0];
-        imageSelected.collect=[image objectAtIndex:path.row];
+        imageSelected.imageShow=[image objectAtIndex:path.row];
         
+      //  NSLog(@"%d",[image count]);
+      
         
     }
     
