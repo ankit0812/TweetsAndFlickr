@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tweetTableView;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
 
 @property (strong, nonatomic) NSArray *dataSource;
 

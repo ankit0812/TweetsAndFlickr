@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93B355BD1B6F4F0900ED7E7D /* SecondDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B355BC1B6F4F0900ED7E7D /* SecondDetailViewController.m */; };
+		93B355C01B6F5A3200ED7E7D /* SimpleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B355BF1B6F5A3200ED7E7D /* SimpleTableCell.m */; };
 		93CC53AA1B6B1FCC00BC8D71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CC53A91B6B1FCC00BC8D71 /* main.m */; };
 		93CC53AD1B6B1FCC00BC8D71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CC53AC1B6B1FCC00BC8D71 /* AppDelegate.m */; };
 		93CC53B01B6B1FCC00BC8D71 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CC53AF1B6B1FCC00BC8D71 /* FirstViewController.m */; };
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93B355BB1B6F4F0900ED7E7D /* SecondDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondDetailViewController.h; path = TweetsAndFlickr/SecondDetailViewController.h; sourceTree = "<group>"; };
+		93B355BC1B6F4F0900ED7E7D /* SecondDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondDetailViewController.m; path = TweetsAndFlickr/SecondDetailViewController.m; sourceTree = "<group>"; };
+		93B355BE1B6F5A3200ED7E7D /* SimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableCell.h; sourceTree = "<group>"; };
+		93B355BF1B6F5A3200ED7E7D /* SimpleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableCell.m; sourceTree = "<group>"; };
 		93CC53A41B6B1FCC00BC8D71 /* TweetsAndFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetsAndFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CC53A81B6B1FCC00BC8D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93CC53A91B6B1FCC00BC8D71 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,8 +47,8 @@
 		93CC53AC1B6B1FCC00BC8D71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		93CC53AE1B6B1FCC00BC8D71 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = TweetsAndFlickr/FirstViewController.h; sourceTree = "<group>"; };
 		93CC53AF1B6B1FCC00BC8D71 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = TweetsAndFlickr/FirstViewController.m; sourceTree = "<group>"; };
-		93CC53B11B6B1FCC00BC8D71 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		93CC53B21B6B1FCC00BC8D71 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		93CC53B11B6B1FCC00BC8D71 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = TweetsAndFlickr/SecondViewController.h; sourceTree = "<group>"; };
+		93CC53B21B6B1FCC00BC8D71 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = TweetsAndFlickr/SecondViewController.m; sourceTree = "<group>"; };
 		93CC53B51B6B1FCD00BC8D71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93CC53B71B6B1FCD00BC8D71 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93CC53BA1B6B1FCD00BC8D71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -108,8 +114,6 @@
 				93CC53B71B6B1FCD00BC8D71 /* Images.xcassets */,
 				93CC53B91B6B1FCD00BC8D71 /* LaunchScreen.xib */,
 				93CC53B41B6B1FCD00BC8D71 /* Main.storyboard */,
-				93CC53B11B6B1FCC00BC8D71 /* SecondViewController.h */,
-				93CC53B21B6B1FCC00BC8D71 /* SecondViewController.m */,
 				93CC53A71B6B1FCC00BC8D71 /* Supporting Files */,
 			);
 			path = TweetsAndFlickr;
@@ -173,6 +177,12 @@
 		93D3D6011B6B46C50063241E /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				93B355BE1B6F5A3200ED7E7D /* SimpleTableCell.h */,
+				93B355BF1B6F5A3200ED7E7D /* SimpleTableCell.m */,
+				93CC53B11B6B1FCC00BC8D71 /* SecondViewController.h */,
+				93CC53B21B6B1FCC00BC8D71 /* SecondViewController.m */,
+				93B355BB1B6F4F0900ED7E7D /* SecondDetailViewController.h */,
+				93B355BC1B6F4F0900ED7E7D /* SecondDetailViewController.m */,
 			);
 			name = Twitter;
 			path = ..;
@@ -282,9 +292,11 @@
 				93CC53D31B6B227400BC8D71 /* Flickr.m in Sources */,
 				93CC53D91B6B28C800BC8D71 /* FlickrCell.m in Sources */,
 				93CC53B31B6B1FCC00BC8D71 /* SecondViewController.m in Sources */,
+				93B355C01B6F5A3200ED7E7D /* SimpleTableCell.m in Sources */,
 				93CC53DE1B6B2D0500BC8D71 /* FlickrDetailViewController.m in Sources */,
 				93CC53AD1B6B1FCC00BC8D71 /* AppDelegate.m in Sources */,
 				93CC53B01B6B1FCC00BC8D71 /* FirstViewController.m in Sources */,
+				93B355BD1B6F4F0900ED7E7D /* SecondDetailViewController.m in Sources */,
 				93CC53AA1B6B1FCC00BC8D71 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

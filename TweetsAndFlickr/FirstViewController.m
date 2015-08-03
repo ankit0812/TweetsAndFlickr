@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.searches = [@[] mutableCopy];          //search is an array which will keep all the searched items in it to be used later
     self.searchResults = [@{} mutableCopy];     //searchResults keeps the details of each search item
     self.flickr = [[Flickr alloc] init];
