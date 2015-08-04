@@ -15,6 +15,10 @@
 #import "SimpleTableCell.h"
 
 @interface SecondViewController ()
+{
+    UIActivityIndicatorView *mySpinner;
+}
+
 
 @end
 
@@ -24,13 +28,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
- _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    mySpinner.center = CGPointMake(kScreenWidth, kScreenHeight);
+    mySpinner.hidesWhenStopped = YES;
+    [self.tweetTableView addSubview:mySpinner];
+    
+    
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    _spinner.alpha = 1.0;
+    _spinner.hidesWhenStopped = NO;
+    
     
     
   //  [_spinner setCenter:CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0)]; // I do this because I'm in landscape mode
   // [self.view addSubview:_spinner];
     
     [_spinner startAnimating];
+    [mySpinner startAnimating];
+    
     
     //[self getTimeLine];
     
@@ -102,9 +118,11 @@
                       }
                   }];
                [_spinner stopAnimating];
+                [mySpinner stopAnimating];
              } else {
                  
                [_spinner stopAnimating];
+                 [mySpinner stopAnimating];
                      // Handle failure to  get connected to internet
                      
                      NSString *error;
@@ -127,6 +145,7 @@
             
              
             [_spinner stopAnimating];
+             [mySpinner stopAnimating];
                // Handle failure to get account access
              
              NSString *error;

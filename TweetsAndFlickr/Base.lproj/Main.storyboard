@@ -194,7 +194,7 @@
                                     <outlet property="dataSource" destination="8rJ-Kc-sve" id="7HY-u7-HqZ"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g2T-Fq-HqU">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g2T-Fq-HqU">
                                 <rect key="frame" x="290" y="67" width="20" height="20"/>
                                 <color key="color" red="0.66666666669999997" green="0.052895174330000003" blue="0.038863128429999998" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
