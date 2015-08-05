@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrImages.h"
 
 @interface FlickrDetailViewController : UIViewController
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageShow;
 
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+- (IBAction)saveButton:(id)sender;
 
-@property (nonatomic,strong) NSString *collect;
+@property (nonatomic,strong) FlickrImages *collect;
 
 
 

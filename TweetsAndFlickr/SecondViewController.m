@@ -28,7 +28,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+   /* self.tweetTableView.estimatedRowHeight=80;
+    self.tweetTableView.rowHeight=UITableViewAutomaticDimension;*/
+    
+    // self.showTweets.estimatedRowHeight = 200;
+     // self.showTweets.rowHeight = UITableViewAutomaticDimension;
+    
+   /* mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     mySpinner.center = CGPointMake(kScreenWidth, kScreenHeight);
     mySpinner.hidesWhenStopped = YES;
     [self.tweetTableView addSubview:mySpinner];
@@ -48,7 +55,7 @@
     [mySpinner startAnimating];
     
     
-    //[self getTimeLine];
+    //[self getTimeLine];*/
     
 }
 
@@ -199,7 +206,7 @@
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:temp]]];
     cell.imageSender.image =image;
     
-    NSLog(@"in cell for row");
+   // NSLog(@"in cell for row");
     
     return cell;
 }
@@ -216,14 +223,14 @@
         NSDictionary *userInfo = [tweet objectForKey:@"user"];
         
         destViewController.actualTester2=[_dataSource objectAtIndex:indexPath.row];
-        NSLog(@"%@",destViewController.actualTester2);
+       // NSLog(@"%@",destViewController.actualTester2);
         destViewController.actualTester2=tweet[@"text"];
         
         destViewController.actualTester3=[userInfo objectForKey:@"profile_image_url"];
-        NSLog(@"%@",destViewController.actualTester3);
+        //NSLog(@"%@",destViewController.actualTester3);
         
         destViewController.actualTester4=[userInfo objectForKey:@"name"];
-        NSLog(@"%@",destViewController.actualTester4);    
+       // NSLog(@"%@",destViewController.actualTester4);
         
         
      

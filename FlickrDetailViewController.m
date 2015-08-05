@@ -18,8 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    _imageShow.image=[UIImage imageNamed:_collect];
+   _imageShow.image=self.collect.thumbnail;
+ //_imageShow.image=[UIImage imageNamed:_collect];
     NSLog(@"%@",_imageShow);
 
 }
@@ -29,6 +29,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)saveButton:(id)sender {
+    
+    UIImage *imageToSave = [_imageShow image]; // alternatively, imageView.image
+    
+    // Save it to the photo album
+    UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil);
+    
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Image saved to Photos successfully" delegate:nil                                                                                                                                                                                                 cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+    [myAlertView show];
+}
 /*
 #pragma mark - Navigation
 

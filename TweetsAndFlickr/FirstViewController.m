@@ -15,7 +15,7 @@
 @interface FirstViewController (){
     NSMutableArray *image;
 }
-@property(nonatomic, strong) NSMutableDictionary *searchResults;
+@property(nonatomic, strong) NSMutableArray *searchResults;
 
 @property(nonatomic, strong) NSMutableArray *searches;
 
@@ -38,10 +38,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
 #pragma mark - UITextFieldDelegate methods
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField             //this will search the flikr for items
 {
+    
+    [_spinner startAnimating];
     [self.flickr searchFlickrForTerm:textField.text completionBlock:^(NSString *searchTerm, NSArray *results, NSError *error)
      {
          if(results && [results count] > 0)                //checks if any result for the query key is found or not
@@ -49,9 +57,10 @@
              if(![self.searches containsObject:searchTerm])       //if the key was not searched before then it will be added to searches array
              {
                  [self.searches insertObject:searchTerm atIndex:0];
-                 self.searchResults[searchTerm] = results;
+                 self.searchResults=(NSMutableArray *) results;
                  
                  NSLog(@"Found %lu photos matching %@", (unsigned long)[results count],searchTerm);
+                  [_spinner stopAnimating];
              }
              
              dispatch_async(dispatch_get_main_queue(), ^         //images are fetched from flickr, so now reloading the collection to
@@ -65,16 +74,25 @@
              NSLog(@"Error searching Flickr: %@", error.localizedDescription);
          }
      }];
+    [_spinner stopAnimating];
     [textField resignFirstResponder];
+    
+   
     return YES;
+    
 }
 
 #pragma mark - Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
 {                       //tells the number of sections to be returned for data to be displayed
-    NSString *searchTerm = self.searches[section];                      //fetching search key from search array
-    return [self.searchResults[searchTerm] count];                      //now looking for the sarch key in dictionary
+    
+   
+  //  NSString *searchTerm = self.searches[section];                      //fetching search key from search array
+    return [self.searchResults count];                      //now looking for the sarch key in dictionary
+ 
+    
+    
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView
@@ -84,10 +102,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {                         //collection view cells are put in reusable queue and deqeued when used
-    
+    [_spinner startAnimating];
+   
     FlickrCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
-    NSString *searchTerm = self.searches[indexPath.section];
-    cell.photo = self.searchResults[searchTerm][indexPath.row];
+  //  NSString *searchTerm = self.searches[indexPath.section];
+    cell.photo = self.searchResults[indexPath.row];
 //NSLog(@" here goes the image %@",cell.photohumbnail);
     
  /*   UIImageView *ImageView = cell.photo.thumbnail;
@@ -104,13 +123,17 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath                        //different images has different size so changing the size of cell accordingly
 {
-    NSString *searchTerm = self.searches[indexPath.section];
+   /// NSString *searchTerm = self.searches[indexPath.section];
     
-    FlickrImages *photo =self.searchResults[searchTerm][indexPath.row];
+    FlickrImages *photo =self.searchResults[indexPath.row];
     
     CGSize retval = photo.thumbnail.size.width > 0 ? photo.thumbnail.size : CGSizeMake(100, 100);
     //if obtained picture is of 0 size then showing a blank area of 100X100 size
+    
+    [_spinner stopAnimating];
     return retval;
+    
+    
 }
 
 
@@ -126,11 +149,21 @@
     if ([segue.identifier isEqualToString:@"imageClicked"])
     {
         NSArray *indexPaths=[self.collectionView indexPathsForSelectedItems];
+        
         FlickrDetailViewController *imageSelected=segue.destinationViewController;
         NSIndexPath *path=[indexPaths objectAtIndex:0];
-        imageSelected.imageShow=[image objectAtIndex:path.row];
+        
+        imageSelected.collect=[self.searchResults objectAtIndex:path.row];
+        
+        
         
       //  NSLog(@"%d",[image count]);
+        
+    /*
+        NSArray *indexPaths=[self.collectionView indexPathsForSelectedItems];
+        flickrImageClick *imageSelected=segue.destinationViewController;
+        NSIndexPath *path=[indexPaths objectAtIndex:0];
+        imageSelected.collect=[self.searchResults objectAtIndex:path.row];*/
       
         
     }
