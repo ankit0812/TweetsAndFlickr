@@ -57,11 +57,15 @@
     
     //[self getTimeLine];*/
     
+    self.tweetTableView.estimatedRowHeight = 200;
+    self.tweetTableView.rowHeight = UITableViewAutomaticDimension;
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+ 
     [self getTimeLine];
    
   
@@ -99,7 +103,7 @@
                  
                  NSMutableDictionary *parameters =
                  [[NSMutableDictionary alloc] init];
-                 [parameters setObject:@"20" forKey:@"count"];
+                 [parameters setObject:@"40" forKey:@"count"];
                  [parameters setObject:@"1" forKey:@"include_entities"];
                  
                  SLRequest *postRequest = [SLRequest

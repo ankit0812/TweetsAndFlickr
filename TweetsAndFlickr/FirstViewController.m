@@ -41,17 +41,30 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
+       
 }
 
 #pragma mark - UITextFieldDelegate methods
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField             //this will search the flikr for items
 {
+    [_searches removeAllObjects];
+   
+    [self.collectionView reloadData];
+    UIActivityIndicatorView *spinner=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
-    [_spinner startAnimating];
+    [_collectionView addSubview:spinner];
+    spinner.frame=_collectionView.bounds;
+    
+    [spinner startAnimating];
+    
+    
     [self.flickr searchFlickrForTerm:textField.text completionBlock:^(NSString *searchTerm, NSArray *results, NSError *error)
      {
+
+         [spinner removeFromSuperview];
+         
          if(results && [results count] > 0)                //checks if any result for the query key is found or not
          {
              if(![self.searches containsObject:searchTerm])       //if the key was not searched before then it will be added to searches array
@@ -60,7 +73,7 @@
                  self.searchResults=(NSMutableArray *) results;
                  
                  NSLog(@"Found %lu photos matching %@", (unsigned long)[results count],searchTerm);
-                  [_spinner stopAnimating];
+                 
              }
              
              dispatch_async(dispatch_get_main_queue(), ^         //images are fetched from flickr, so now reloading the collection to
@@ -74,9 +87,9 @@
              NSLog(@"Error searching Flickr: %@", error.localizedDescription);
          }
      }];
-    [_spinner stopAnimating];
+    //[_spinner stopAnimating];
     [textField resignFirstResponder];
-    
+    _textField.text=@"";
    
     return YES;
     
@@ -102,7 +115,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {                         //collection view cells are put in reusable queue and deqeued when used
-    [_spinner startAnimating];
+   // [spinner startAnimating];
    
     FlickrCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
   //  NSString *searchTerm = self.searches[indexPath.section];
@@ -125,12 +138,12 @@
 {
    /// NSString *searchTerm = self.searches[indexPath.section];
     
-    FlickrImages *photo =self.searchResults[indexPath.row];
+   // FlickrImages *photo =self.searchResults[indexPath.row];
     
-    CGSize retval = photo.thumbnail.size.width > 0 ? photo.thumbnail.size : CGSizeMake(100, 100);
+    CGSize retval = CGSizeMake(100, 100);
     //if obtained picture is of 0 size then showing a blank area of 100X100 size
     
-    [_spinner stopAnimating];
+   // [spinner stopAnimating];
     return retval;
     
     

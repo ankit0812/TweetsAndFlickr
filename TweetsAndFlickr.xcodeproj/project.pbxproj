@@ -90,6 +90,8 @@
 		93CC539B1B6B1FCC00BC8D71 = {
 			isa = PBXGroup;
 			children = (
+				93CC53D01B6B221D00BC8D71 /* Flickr */,
+				93D3D6011B6B46C50063241E /* Twitter */,
 				93CC53DF1B6B2F2000BC8D71 /* Frameworks */,
 				93CC53A61B6B1FCC00BC8D71 /* TweetsAndFlickr */,
 				93CC53C31B6B1FCD00BC8D71 /* TweetsAndFlickrTests */,
@@ -124,8 +126,6 @@
 			children = (
 				93CC53A81B6B1FCC00BC8D71 /* Info.plist */,
 				93CC53A91B6B1FCC00BC8D71 /* main.m */,
-				93CC53D01B6B221D00BC8D71 /* Flickr */,
-				93D3D6011B6B46C50063241E /* Twitter */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -162,7 +162,6 @@
 				93CC53DD1B6B2D0500BC8D71 /* FlickrDetailViewController.m */,
 			);
 			name = Flickr;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		93CC53DF1B6B2F2000BC8D71 /* Frameworks */ = {
@@ -185,7 +184,6 @@
 				93B355BC1B6F4F0900ED7E7D /* SecondDetailViewController.m */,
 			);
 			name = Twitter;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
