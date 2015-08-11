@@ -50,8 +50,9 @@
 - (BOOL) textFieldShouldReturn:(UITextField *)textField             //this will search the flikr for items
 {
     [_searches removeAllObjects];
-   
     [self.collectionView reloadData];
+    
+    
     UIActivityIndicatorView *spinner=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     [_collectionView addSubview:spinner];
@@ -59,7 +60,8 @@
     
     [spinner startAnimating];
     
-    
+    if([self connectedToInternet]==YES)
+    {
     [self.flickr searchFlickrForTerm:textField.text completionBlock:^(NSString *searchTerm, NSArray *results, NSError *error)
      {
 
@@ -92,6 +94,24 @@
     _textField.text=@"";
    
     return YES;
+    }
+    else
+    {
+        NSString *error;
+        
+        error = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",
+                 @"Not Connected to Internet",
+                 @"Or", @"Not Logged on Twitter",@"Try Again"];
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                          message:error
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+        return NO;
+    }
     
 }
 
@@ -120,6 +140,7 @@
     FlickrCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
   //  NSString *searchTerm = self.searches[indexPath.section];
     cell.photo = self.searchResults[indexPath.row];
+    
 //NSLog(@" here goes the image %@",cell.photohumbnail);
     
  /*   UIImageView *ImageView = cell.photo.thumbnail;
@@ -181,6 +202,12 @@
         
     }
     
+}
+
+- (BOOL) connectedToInternet
+{
+    NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"] encoding:NSUTF8StringEncoding error:nil];
+    return ( URLString != NULL ) ? YES : NO;
 }
 @end
 
